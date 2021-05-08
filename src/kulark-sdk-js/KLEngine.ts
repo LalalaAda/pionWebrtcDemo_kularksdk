@@ -193,6 +193,13 @@ export class KLEngine {
   ): Promise<LocalStream> {
     return await this.client.createLocalScreenStream(settings);
   }
+  // 生成自定义本地流
+  async createCustomStream(
+    stream: MediaStream,
+    settings?: StreamOptions
+  ): Promise<LocalStream> {
+    return await this.client.createCustomStream(stream, settings);
+  }
   // publish stream
   async publishStream(stream: LocalStream) {
     await this.client.publish(stream);

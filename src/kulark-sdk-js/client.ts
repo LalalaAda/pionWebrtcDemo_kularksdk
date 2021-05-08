@@ -191,6 +191,19 @@ export default class Client extends EventEmitter {
     });
     return localScreen;
   }
+  async createCustomStream(
+    stream: MediaStream,
+    settings?: StreamOptions
+  ): Promise<LocalStream> {
+    return new LocalStream(stream, {
+      codec: settings?.codec.toUpperCase() || "H264",
+      resolution: settings?.resolution || "hd",
+      bandwidth: settings?.bandwidth || undefined,
+      audio: settings?.audio || false,
+      video: settings?.video || false,
+      screen: settings?.screen || true
+    })
+  }
 
   async join(rid: string, info = { name: "Guest" }) {
     let result = false;

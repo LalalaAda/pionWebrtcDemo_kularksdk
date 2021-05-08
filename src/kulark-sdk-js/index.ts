@@ -77,6 +77,13 @@ export class KLSdk {
   ): Promise<LocalStream> {
     return await this.engine.createLocalScreenStream(settings);
   }
+  // 创建自定义本地流
+  async createCustomStream (
+    stream: MediaStream,
+    setting?: StreamOptions
+  ): Promise<LocalStream> {
+    return await this.engine.createCustomStream(stream, setting);
+  }
   // publish stream
   async publishStream(stream: LocalStream) {
     await this.engine.publishStream(stream);
@@ -104,7 +111,7 @@ export class KLSdk {
   }
 
   // 创建上行流对象
-  createLcalPeer(bScreen: boolean) {
+  createLocalPeer(bScreen: boolean) {
     this.engine.createLocalPeer(bScreen);
   }
   // 创建下行流对象
